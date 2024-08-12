@@ -17,6 +17,10 @@ FROM ubuntu:jammy
 # Defaulting to ROS 2 humble
 ARG ROS_DISTRO="humble"
 
+earthfile:
+  COPY Earthfile Earthfile
+  SAVE ARTIFACT Earthfile
+
 setup:
   # Disable prompting during package installation
   ARG DEBIAN_FRONTEND=noninteractive
