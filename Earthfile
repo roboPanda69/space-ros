@@ -19,12 +19,14 @@ ARG ROS_DISTRO="humble"
 
 earthfile:
   COPY Earthfile Earthfile
-  COPY docker/ docker/
   COPY excluded-pkgs.txt ./
+  COPY docker/ docker/
+  COPY ros2.repos ./
 
   SAVE ARTIFACT Earthfile
   SAVE ARTIFACT excluded-pkgs.txt
   SAVE ARTIFACT docker/
+  SAVE ARTIFACT ros2.repos
 
 setup:
   # Disable prompting during package installation
