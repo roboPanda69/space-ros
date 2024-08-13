@@ -18,10 +18,13 @@ FROM ubuntu:jammy
 ARG ROS_DISTRO="humble"
 
 earthfile:
-  # COPY Earthfile Earthfile
-  # SAVE ARTIFACT Earthfile
+  COPY Earthfile Earthfile
+  COPY docker/ docker/
   COPY excluded-pkgs.txt ./excluded-pkgs.txt
+
+  SAVE ARTIFACT Earthfile
   SAVE ARTIFACT excluded-pkgs.txt
+  SAVE ARTIFACT docker/
 
 setup:
   # Disable prompting during package installation
