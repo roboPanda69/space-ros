@@ -18,9 +18,7 @@ FROM ubuntu:jammy
 ARG ROS_DISTRO="humble"
 
 earthfile:
-  COPY Earthfile Earthfile
   COPY docker/ docker/
-  SAVE ARTIFACT Earthfile
   SAVE ARTIFACT docker/
 
 setup:
