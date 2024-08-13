@@ -20,7 +20,7 @@ ARG ROS_DISTRO="humble"
 earthfile:
   COPY Earthfile Earthfile
   COPY docker/ docker/
-  COPY excluded-pkgs.txt ./excluded-pkgs.txt
+  COPY excluded-pkgs.txt ./
 
   SAVE ARTIFACT Earthfile
   SAVE ARTIFACT excluded-pkgs.txt
