@@ -18,8 +18,8 @@ FROM ubuntu:jammy
 ARG ROS_DISTRO="humble"
 
 earthfile:
-  COPY Earthfile Earthfile
-  SAVE ARTIFACT Earthfile
+  # COPY Earthfile Earthfile
+  # SAVE ARTIFACT Earthfile
   COPY excluded-pkgs.txt ./
   SAVE ARTIFACT excluded-pkgs.txt
 
