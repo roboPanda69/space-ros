@@ -19,9 +19,7 @@ ARG ROS_DISTRO="humble"
 
 earthfile:
   COPY Earthfile Earthfile
-  COPY docker/ docker/
   SAVE ARTIFACT Earthfile
-  SAVE ARTIFACT docker/
 
 setup:
   # Disable prompting during package installation
@@ -113,13 +111,6 @@ setup:
   RUN --mount=type=cache,mode=0777,target=/var/cache/apt,sharing=locked,id=cache_apt_cache \
       --mount=type=cache,mode=0777,target=/var/lib/apt,sharing=locked,id=lib_apt_cache \
       sudo apt update && sudo apt upgrade -y
-
-  # Download the repository archive and extract the docker/scripts/ directory directly into docker/scripts
-  RUN mkdir -p docker/scripts && \
-      curl -L https://github.com/roboPanda69/space-ros/archive/refs/heads/main.zip -o space-ros.zip && \
-      unzip space-ros.zip "space-ros-main/docker/scripts/*" -d /tmp && \
-      mv /tmp/space-ros-main/docker/scripts/* docker/scripts/ && \
-      rm -rf space-ros.zip /tmp/space-ros-main
 
   # Create install location and copy in relevant scripts
   COPY --chown ${USERNAME}:${USERNAME} --dir docker/scripts/ ${SPACEROS_DIR}
